@@ -7,7 +7,11 @@
         <!-- <input #box (keyup.enter)="onEnter(box.value)"> -->
         <app-city-searcher (messageEvent)="receiveMessage($event)"></app-city-searcher>
         <h1>{{post.name}}</h1>
-    {{post | json}}
+        <h2>Temperature: {{post.main.temp}}</h2>
+        <h2>Pressure: {{post.main.pressure}}</h2>
+        <h2>Humidity: {{post.main.humidity}}</h2>
+        <h2>Temperature Min: {{post.main.temp_min}}</h2>
+        <h2>Temperature Max: {{post.main.temp_max}}</h2>
 </div>
 <h3>{{location.latitude}}</h3>
 <!-- <div *ngIf="posts$ | async as post">

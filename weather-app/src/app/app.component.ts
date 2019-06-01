@@ -1,7 +1,8 @@
-import { Component, OnChanges, SimpleChanges, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { WeatherCallsService } from './../weather-calls.service';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { weather } from './post';
+
 
 @Component({
   selector: 'app-root',
@@ -13,26 +14,19 @@ export class AppComponent implements OnInit{
   cityName: string = 'Detroit';
   countryCode: string = 'US';
   posts$: Observable<weather>;
-  api_key: string = 'e1d6d4304bf143926ad65c4bf48f8429';
   location = {};
 
-  readonly ROOT_URL: string = `https://api.openweathermap.org/data/2.5/weather`;
-  constructor(private http: HttpClient) {}
-
-  getPosts(){
-    this.posts$ = this.http.get<weather>(this.ROOT_URL + `?q=${this.cityName}&APPID=${this.api_key}`);
-  }
+  constructor(private _weatherCallService: WeatherCallsService) {}
 
   receiveMessage($event){
     this.cityName = $event;
-    this.getPosts();
+    this.posts$ = this._weatherCallService.getCurrentWeatherByCity(this.cityName);
   }
 
   getLocation(){
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
-        this.location = position.coords;
+        return position.coords;
       });
     }else{
       return 'none';
@@ -40,7 +34,8 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.getPosts();
-    this.getLocation();
+    this.posts$ = this._weatherCallService.getCurrentWeatherByCity(this.cityName);
+    // this.getPosts();
+    this.location = this.getLocation();
   }
 }

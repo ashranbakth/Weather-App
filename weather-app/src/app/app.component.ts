@@ -32,10 +32,15 @@ export class AppComponent implements OnInit{
       return 'none';
     }
   }
+  temperatureConverter(valNum: string): string {
+    let value = Number(valNum);
+    let result = ((value-273.15)*1.8)+32;
+    return result.toFixed(2).toString();
+  }
 
   ngOnInit(){
     this.posts$ = this._weatherCallService.getCurrentWeatherByCity(this.cityName);
     // this.getPosts();
-    this.location = this.getLocation();
+    // this.location = this.getLocation();
   }
 }

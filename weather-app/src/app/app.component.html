@@ -1,19 +1,21 @@
-<h1>Weather Application</h1>
-<button (click)="getPosts()">Get Weather Data</button>
-
-<div *ngIf="posts$ | async as post">
-        <!-- <input type="search">
-        <input type="submit"> -->
-        <!-- <input #box (keyup.enter)="onEnter(box.value)"> -->
-        <app-city-searcher (messageEvent)="receiveMessage($event)"></app-city-searcher>
-        <h1>{{post.name}}</h1>
-        <h2>Temperature: {{post.main.temp}}</h2>
-        <h2>Pressure: {{post.main.pressure}}</h2>
-        <h2>Humidity: {{post.main.humidity}}</h2>
-        <h2>Temperature Min: {{post.main.temp_min}}</h2>
-        <h2>Temperature Max: {{post.main.temp_max}}</h2>
+<div class="center">
+        <h1 class="center-text">Weather Application</h1>
+        <div class="center-text">
+                <app-city-searcher (messageEvent)="receiveMessage($event)"></app-city-searcher>
+        </div>
 </div>
-<h3>{{location.latitude}}</h3>
+
+<div class="center">
+        <div *ngIf="posts$ | async as post">
+                <h1>{{post.name}}</h1>
+                <h2>Temperature: {{temperatureConverter(post.main.temp)}} &#8457;</h2>
+                <h2>Pressure: {{post.main.pressure}} hPa</h2>
+                <h2>Humidity: {{post.main.humidity}} %</h2>
+                <h2>Temperature Min: {{temperatureConverter(post.main.temp_min)}} &#8457;</h2>
+                <h2>Temperature Max: {{temperatureConverter(post.main.temp_max)}} &#8457;</h2>
+        </div>
+</div>
+<!-- <h2>{{location.latitude}}</h2> -->
 <!-- <div *ngIf="posts$ | async as post">
         <h1>{{post.sys.name}}</h1>
 </div> -->

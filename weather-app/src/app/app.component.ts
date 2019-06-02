@@ -10,18 +10,10 @@ import { weather } from './post';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  title = 'weather-app';
-  cityName: string = 'Detroit';
-  countryCode: string = 'US';
-  posts$: Observable<weather>;
+  title = 'Weather Application';
   location = {};
 
-  constructor(private _weatherCallService: WeatherCallsService) {}
-
-  receiveMessage($event){
-    this.cityName = $event;
-    this.posts$ = this._weatherCallService.getCurrentWeatherByCity(this.cityName);
-  }
+  constructor() {}
 
   getLocation(){
     if(navigator.geolocation){
@@ -32,15 +24,9 @@ export class AppComponent implements OnInit{
       return 'none';
     }
   }
-  temperatureConverter(valNum: string): string {
-    let value = Number(valNum);
-    let result = ((value-273.15)*1.8)+32;
-    return result.toFixed(2).toString();
-  }
+
 
   ngOnInit(){
-    this.posts$ = this._weatherCallService.getCurrentWeatherByCity(this.cityName);
-    // this.getPosts();
-    // this.location = this.getLocation();
+
   }
 }

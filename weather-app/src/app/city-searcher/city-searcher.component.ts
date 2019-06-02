@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CityInformationService } from './../../city-information.service';
+import { Component, OnInit } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-city-searcher',
@@ -7,15 +10,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CitySearcherComponent implements OnInit {
 
-  cityName: string;
-  @Output() messageEvent = new EventEmitter<string>();
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private _cityInformationService: CityInformationService) { }
 
   onEnter(value: string) { 
-    this.cityName = value;
-    this.messageEvent.emit(this.cityName);
+    this._cityInformationService.changeCity(value);
+  }
+
+  ngOnInit() {
   }
 }

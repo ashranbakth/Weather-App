@@ -1,19 +1,11 @@
 <div class="center">
-        <h1 class="center-text">Weather Application</h1>
+        <h1 class="center-text">{{title}}</h1>
         <div class="center-text">
-                <app-city-searcher (messageEvent)="receiveMessage($event)"></app-city-searcher>
+                <app-city-searcher></app-city-searcher>
         </div>
 </div>
-
 <div class="center">
-        <div *ngIf="posts$ | async as post">
-                <h1>{{post.name}}</h1>
-                <h2>Temperature: {{temperatureConverter(post.main.temp)}} &#8457;</h2>
-                <h2>Pressure: {{post.main.pressure}} hPa</h2>
-                <h2>Humidity: {{post.main.humidity}} %</h2>
-                <h2>Temperature Min: {{temperatureConverter(post.main.temp_min)}} &#8457;</h2>
-                <h2>Temperature Max: {{temperatureConverter(post.main.temp_max)}} &#8457;</h2>
-        </div>
+        <app-weather-details></app-weather-details>
 </div>
 <!-- <h2>{{location.latitude}}</h2> -->
 <!-- <div *ngIf="posts$ | async as post">

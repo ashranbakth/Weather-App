@@ -6,9 +6,14 @@ body{
 .center {
     margin: auto;
     width: 60%;
-    border: 3px solid #73AD21;
+    background: #eee;
     padding: 10px;
     text-align: center;
+}
+
+.wrapper{
+    background: #eee;
+    padding: 1em;
 }
 
 .center-text{

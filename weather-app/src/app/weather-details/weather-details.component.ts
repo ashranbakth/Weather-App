@@ -1,9 +1,9 @@
+import { GeoLocation } from './../GeoLocation';
 import { CityInformationService } from './../../city-information.service';
 import { weather } from './../post';
 import { Observable } from 'rxjs';
 import { WeatherCallsService } from './../../weather-calls.service';
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-weather-details',
@@ -14,10 +14,10 @@ export class WeatherDetailsComponent implements OnInit {
 
   posts$: Observable<weather>;
   cityName: string;
+  currentLocation$: Observable<GeoLocation>;
 
   constructor(private _weatherCallService: WeatherCallsService,
               private _cityInformationService: CityInformationService) { 
-                
               }
 
   temperatureConverter(valNum: string): string {
@@ -26,6 +26,33 @@ export class WeatherDetailsComponent implements OnInit {
     return result.toFixed(2).toString();
   }
 
+  // displayLocationInfo(position) {
+  //   const lng = position.coords.longitude;
+  //   const lat = position.coords.latitude;
+  //   console.log(`longitude: ${ lng } | latitude: ${ lat }`);
+  //   this.currentLocation.latitude = lat;
+  //   this.currentLocation.longitude = lng;
+  // }
+
+  getLocation(): Observable<GeoLocation> {
+    return new Observable(obs => {
+     navigator.geolocation.getCurrentPosition(
+       success => {
+         const current: GeoLocation = {
+          latitude: success.coords.latitude,
+          longitude: success.coords.longitude
+         }
+         obs.next(current);
+         obs.complete();
+       },
+       error => {
+         obs.error(error);
+       }
+     );
+   });
+   }
+
+
   ngOnInit() {
     this._cityInformationService.cityName$.
       subscribe(newCity => {
@@ -33,8 +60,11 @@ export class WeatherDetailsComponent implements OnInit {
         this.posts$ = this._weatherCallService.
           getCurrentWeatherByCity(this.cityName);
       });
+
     this.posts$ = this._weatherCallService.
       getCurrentWeatherByCity(this.cityName);
+    this.currentLocation$ = this.getLocation();
+    this.currentLocation$.subscribe(data => console.log('data ', data))
   }
 
 }

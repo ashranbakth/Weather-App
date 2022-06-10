@@ -17,10 +17,10 @@ export class WeatherCallsService {
 
 
   getCurrentWeatherByCity(cityName: string): Observable<weather> {
-    return this.http.get<weather>(`${this.ROOT_URL_CURRENT_WEATHER}?q=${cityName}&APPID=${this.ApiKey}`);
+    return this.http.get<weather>(`${this.ROOT_URL_CURRENT_WEATHER}?q=${cityName}&appid=${this.ApiKey}`);
   }
 
   getCurrentWeatherByCoordinate(coordinates: GeoLocation): Observable<weather> {
-    return this.http.get<weather>(`${this.ROOT_URL_CURRENT_WEATHER}?lat=${coordinates.latitude}&lon=${coordinates.longitude}&APPID=${this.ApiKey}`);
+    return this.http.get<weather>(`${this.ROOT_URL_CURRENT_WEATHER}?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${this.ApiKey}`);
   }
 }

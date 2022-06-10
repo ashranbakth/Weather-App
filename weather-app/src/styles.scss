@@ -2,13 +2,16 @@
 body{
     // font-family: 'Roboto Mono', monospace;
     font-family: 'Merriweather Sans', sans-serif;
+    color: white;
+    background: #1C9CF6;
 }
 .center {
     margin: auto;
     width: 60%;
-    background: #eee;
+    background: #1D71F2;
     padding: 10px;
     text-align: center;
+    border-radius: 10px;
 }
 
 .wrapper{
@@ -24,7 +27,8 @@ input{
       width: 60%;
       height: 25px;
       margin: 0 auto;
-      border:solid 1px #ccc;
+      border:solid 1px #1C9CF6;
       border-radius: 10px;
       text-indent: 10px;
+      border-width: 3px;
 }

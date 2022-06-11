@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CitySearcherComponent } from './city-searcher/city-searcher.component';
 import { WeatherDetailsComponent } from './weather-details/weather-details.component';
+import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CitySearcherComponent,
-    WeatherDetailsComponent
+    WeatherDetailsComponent,
+    WeatherForecastComponent
   ],
   imports: [
     BrowserModule,
@@ -23,4 +25,6 @@ import { WeatherDetailsComponent } from './weather-details/weather-details.compo
   providers: [CityInformationService, WeatherCallsService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+}

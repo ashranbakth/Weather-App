@@ -1,6 +1,6 @@
 <div *ngIf="weatherDetail$ | async as post; else notShow">
     <h2>{{post.name}}</h2>
-    <h3>Temperature: {{temperatureConverter(post.main.temp)}} &#8457;</h3>
+    <h1>{{temperatureConverter(post.main.temp)}} &#8457;</h1>
     <h3>Pressure: {{post.main.pressure}} hPa</h3>
     <h3>Humidity: {{post.main.humidity}}%</h3>
     <h3>Temperature Min: {{temperatureConverter(post.main.temp_min)}} &#8457;</h3>

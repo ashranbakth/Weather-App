@@ -45,11 +45,11 @@ export class WeatherDetailsComponent implements OnInit, OnDestroy {
     this.weatherDetail$ = this._weatherCallService.
       getCurrentWeatherByCity(this.cityName);
 
-    this.currentLocation$ = this._currentLocationService.getLocation();
+    // this.currentLocation$ = this._currentLocationService.getLocation();
 
-    this.subscription.add(this.currentLocation$.subscribe(coordinate => {
-      this.weatherDetail$ = this._weatherCallService.getCurrentWeatherByCoordinate(coordinate);
-    }));
+    // this.subscription.add(this.currentLocation$.subscribe(coordinate => {
+    //   this.weatherDetail$ = this._weatherCallService.getCurrentWeatherByCoordinate(coordinate);
+    // }));
   }
 
   ngOnDestroy(){

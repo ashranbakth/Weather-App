@@ -13,19 +13,21 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faThunderstorm, faCloudBolt, faCloudRain, faCloudShowersWater, faSnowflake,
          faTornado, faSmog, faSun, faCloud} from '@fortawesome/free-solid-svg-icons';
+import { WeatherTypePipe } from './utilities/weather-to-icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     CitySearcherComponent,
     WeatherDetailsComponent,
-    WeatherForecastComponent
+    WeatherForecastComponent,
+    WeatherTypePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule, 
   ],
   providers: [CityInformationService, WeatherCallsService],
   bootstrap: [AppComponent]

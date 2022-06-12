@@ -1,5 +1,7 @@
 <div *ngIf="weatherDetail$ | async as post; else notShow">
     <h2>{{post.name}}</h2>
+    <fa-icon icon="cloud" size="6x"></fa-icon>
+    <h3>Weather: {{post.weather[0].main}}</h3>
     <h1>{{temperatureConverter(post.main.temp)}} &#8457;</h1>
     <h3>Pressure: {{post.main.pressure}} hPa</h3>
     <h3>Humidity: {{post.main.humidity}}%</h3>

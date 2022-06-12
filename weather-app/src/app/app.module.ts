@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CitySearcherComponent } from './city-searcher/city-searcher.component';
 import { WeatherDetailsComponent } from './weather-details/weather-details.component';
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faThunderstorm, faCloudBolt, faCloudRain, faCloudShowersWater, faSnowflake,
+         faTornado, faSmog, faSun, faCloud} from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,22 @@ import { WeatherForecastComponent } from './weather-forecast/weather-forecast.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [CityInformationService, WeatherCallsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-
+  constructor() {
+    library.add(faThunderstorm, 
+                faCloudBolt, 
+                faCloudRain, 
+                faCloudShowersWater, 
+                faSnowflake,
+                faTornado,
+                faSmog,
+                faSun,
+                faCloud);
+  }
 }

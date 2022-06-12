@@ -10,6 +10,13 @@ export interface weather{
     sys: any;
     timezone: number;
     visibility: number;
-    weather: any;
+    weather: Array<Weather>;
     wind: any;
+}
+
+export interface Weather {
+    id: number;
+    main: string;
+    description: string;
+    icon: string
 }
